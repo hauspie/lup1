@@ -1,0 +1,15 @@
+db:
+        build: db
+        restart: always
+        volumes:
+           - ./volumes/db/var/lib/postgresql/data:/var/lib/postgresql/data
+           - /etc/localtime:/etc/localtime:ro
+lup1:
+        build: lup1
+        restart: always
+        links:
+                - db:db
+        ports:
+                - "127.0.0.1:8080:8080"
+        volumes:
+                - ./volumes/lup1/srv/lup1/src/main/resources:/srv/lup1/srv/main/resources
