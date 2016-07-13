@@ -32,4 +32,10 @@ INSERT INTO credential VALUES('root', '10000:e72e6165bd32d0f8752356f7f0cc5f2d985
 -- Insertion des roles de chaque membre
 
 INSERT INTO has_role VALUES ('root','admin');
+INSERT INTO has_role VALUES ('root','responsable_formation');
+INSERT INTO has_role VALUES ('root','responsable_cours');
+INSERT INTO has_role VALUES ('root','responsable_stage');
+
+INSERT INTO formation (NAME,SEMESTRE_MIN,SEMESTRE_MAX) VALUES('DA2I',5,6);
+
 
