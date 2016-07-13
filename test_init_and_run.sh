@@ -11,7 +11,7 @@ SQL_QUERY="psql -h $DB_HOST -U $DB_USER $DB_NAME"
 
 
 # Check if db already initialized
-$SQL_QUERY -A <<EOF
+$SQL_QUERY -A <<EOF | grep -q 'rows'
 select * from CREDENTIAL;
 EOF
 
