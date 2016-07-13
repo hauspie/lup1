@@ -20,7 +20,7 @@ do
 done
 
 # Check if db already initialized
-$SQL_QUERY -A <<EOF | grep -q 'rows'
+$SQL_QUERY -A <<EOF | grep -q 'row'
 select * from CREDENTIAL;
 EOF
 
