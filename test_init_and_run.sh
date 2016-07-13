@@ -11,12 +11,12 @@ SQL_QUERY="psql -h $DB_HOST -U $DB_USER $DB_NAME"
 
 
 # Check if db already initialized
-$SQL_QUERY -A <<EOF | grep -q '0 rows'
+$SQL_QUERY -A <<EOF
 select * from CREDENTIAL;
 EOF
 
 
-if [ $? -eq 0 ] # Database must be populated
+if [ $? -ne 0 ] # Database must be populated
 then
     for file in $SQL_FILES
     do
