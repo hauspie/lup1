@@ -10,6 +10,15 @@ SQL_FILES_PATH="db-scheme"
 SQL_QUERY="psql -h $DB_HOST -U $DB_USER $DB_NAME"
 
 
+# wait for db to be up
+while !$SQL_QUERY <<EOF
+\d
+EOF
+do
+    echo 'Waiting for db to become available'
+    sleep 1
+done
+
 # Check if db already initialized
 $SQL_QUERY -A <<EOF | grep -q 'rows'
 select * from CREDENTIAL;
