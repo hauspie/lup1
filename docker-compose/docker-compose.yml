@@ -1,5 +1,5 @@
 db:
-        build: db
+        image: postgres:latest
         restart: always
         volumes:
            - ./volumes/db/var/lib/postgresql/data:/var/lib/postgresql/data
@@ -11,5 +11,3 @@ lup1:
                 - db:db
         ports:
                 - "127.0.0.1:8080:8080"
-        volumes:
-                - ./volumes/lup1/srv/lup1/src/main/resources:/srv/lup1/srv/main/resources

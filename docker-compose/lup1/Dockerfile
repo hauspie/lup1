@@ -1,10 +1,12 @@
 FROM maven
 
 RUN apt-get update && apt-get -y install \
-	git
+	git \
+        postgresql-client
 	
 RUN git clone https://github.com/hauspie/lup1 /srv/lup1
 
 WORKDIR /srv/lup1
+COPY config.properties src/main/resources
 
-ENTRYPOINT ["mvn", "jetty:run"]
+ENTRYPOINT ["test_init_and_run.sh"]
