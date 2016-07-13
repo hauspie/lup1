@@ -5,7 +5,7 @@
 DB_HOST=db
 DB_USER=postgres
 DB_NAME=postgres
-SQL_FILES="01_init.sql 02_init.sql"
+SQL_FILES="01_init.sql 02_init.sql populate.sql"
 SQL_FILES_PATH="db-scheme"
 SQL_QUERY="psql -h $DB_HOST -U $DB_USER $DB_NAME"
 
@@ -18,6 +18,7 @@ EOF
 
 if [ $? -ne 0 ] # Database must be populated
 then
+    # Create DB schema and inject initial data
     for file in $SQL_FILES
     do
         $SQL_QUERY < "$SQL_FILES_PATH/$file"
