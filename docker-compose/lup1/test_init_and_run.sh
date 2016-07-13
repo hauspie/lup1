@@ -11,7 +11,7 @@ SQL_QUERY="psql -h $DB_HOST -U $DB_USER $DB_NAME"
 
 
 # wait for db to be up
-while !$SQL_QUERY <<EOF
+while ! $SQL_QUERY <<EOF
 \d
 EOF
 do
